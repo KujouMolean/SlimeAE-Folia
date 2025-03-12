@@ -1,5 +1,6 @@
 package me.ddggdd135.slimeae.tasks;
 
+import com.molean.Folia;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,8 +26,7 @@ public class NetworkRefreshTask implements Runnable {
     public void start(@Nonnull SlimeAEPlugin plugin) {
         this.tickRate = Slimefun.getCfg().getInt("URID.custom-ticker-delay");
 
-        BukkitScheduler scheduler = plugin.getServer().getScheduler();
-        scheduler.runTaskTimerAsynchronously(plugin, this, tickRate, tickRate);
+        Folia.getScheduler().runTaskTimerAsynchronously(plugin, this, tickRate, tickRate);
     }
 
     private void reset() {

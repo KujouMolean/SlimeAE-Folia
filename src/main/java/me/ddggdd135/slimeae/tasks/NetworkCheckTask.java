@@ -1,5 +1,6 @@
 package me.ddggdd135.slimeae.tasks;
 
+import com.molean.folia.adapter.Folia;
 import com.xzavier0722.mc.plugin.slimefun4.storage.controller.SlimefunBlockData;
 import com.xzavier0722.mc.plugin.slimefun4.storage.util.StorageCacheUtils;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -23,8 +24,7 @@ public class NetworkCheckTask implements Runnable {
     public void start(@Nonnull SlimeAEPlugin plugin) {
         this.tickRate = Slimefun.getCfg().getInt("URID.custom-ticker-delay") / 2;
 
-        BukkitScheduler scheduler = plugin.getServer().getScheduler();
-        scheduler.runTaskTimerAsynchronously(plugin, this, tickRate, tickRate);
+        Folia.getScheduler().runTaskTimerAsynchronously(plugin, this, tickRate, tickRate);
     }
 
     private void reset() {

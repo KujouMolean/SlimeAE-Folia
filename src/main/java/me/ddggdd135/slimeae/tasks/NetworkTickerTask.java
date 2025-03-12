@@ -1,5 +1,6 @@
 package me.ddggdd135.slimeae.tasks;
 
+import com.molean.Folia;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,8 +23,7 @@ public class NetworkTickerTask implements Runnable {
     public void start(@Nonnull SlimeAEPlugin plugin) {
         this.tickRate = Slimefun.getCfg().getInt("URID.custom-ticker-delay") / 2;
 
-        BukkitScheduler scheduler = plugin.getServer().getScheduler();
-        scheduler.runTaskTimerAsynchronously(plugin, this, tickRate, tickRate);
+        Folia.getScheduler().runTaskTimerAsynchronously(plugin, this, tickRate, tickRate);
     }
 
     private void reset() {
@@ -59,9 +59,9 @@ public class NetworkTickerTask implements Runnable {
                     for (AutoCraftingSession session : sessions) {
                         if (!session.hasNext()) {
                             networkInfo.getCraftingSessions().remove(session);
-                            Slimefun.runSync(() -> {
-                                session.getMenu().getInventory().getViewers().forEach(HumanEntity::closeInventory);
-                            });
+                                session.getMenu().getInventory().getViewers().forEach(humanEntity -> {
+                                    Folia.runSync(humanEntity::closeInventory, humanEntity, 0L);
+                                });
                         } else session.moveNext(1024);
                     }
                     networkInfo.updateAutoCraftingMenu();

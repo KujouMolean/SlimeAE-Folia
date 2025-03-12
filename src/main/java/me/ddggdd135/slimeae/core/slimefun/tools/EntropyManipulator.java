@@ -1,5 +1,6 @@
 package me.ddggdd135.slimeae.core.slimefun.tools;
 
+import com.molean.Folia;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
@@ -72,7 +73,7 @@ public class EntropyManipulator extends SlimefunItem implements Rechargeable, Re
             if (victim instanceof LivingEntity) {
                 LivingEntity entity = (LivingEntity) victim;
                 entity.setFireTicks(FIRE_TICKS);
-                playEffect(entity.getLocation(), Particle.SMOKE_LARGE);
+                playEffect(entity.getLocation(), Particle.LARGE_SMOKE);
                 playSound(entity.getLocation(), Sound.BLOCK_FIRE_AMBIENT);
             }
         };
@@ -117,9 +118,9 @@ public class EntropyManipulator extends SlimefunItem implements Rechargeable, Re
 
         dropItemsWithVelocity(center, Material.BAKED_POTATO, RANDOM.nextInt(2) + 2);
 
-        Bukkit.getScheduler()
+       Folia.getScheduler()
                 .runTaskLater(
-                        SlimeAEPlugin.getInstance(),
+                        SlimeAEPlugin.getInstance(), block.getLocation(),
                         () -> {
                             block.setType(Material.POTATOES);
                             Ageable newCrop = (Ageable) block.getBlockData();
@@ -173,7 +174,7 @@ public class EntropyManipulator extends SlimefunItem implements Rechargeable, Re
         Material result = COOL_TRANSFORMATIONS.get(block.getType());
         if (result != null) {
             block.setType(result);
-            playEffect(block.getLocation(), Particle.VILLAGER_HAPPY);
+            playEffect(block.getLocation(), Particle.HAPPY_VILLAGER);
         } else {
             tryIgniteBlock(block);
         }
@@ -188,7 +189,7 @@ public class EntropyManipulator extends SlimefunItem implements Rechargeable, Re
                 coolLava(block);
                 break;
         }
-        playEffect(block.getLocation(), Particle.SNOWBALL);
+        playEffect(block.getLocation(), Particle.ITEM_SNOWBALL);
     }
 
     private void freezeWater(Block block) {
@@ -219,7 +220,7 @@ public class EntropyManipulator extends SlimefunItem implements Rechargeable, Re
         World world = location.getWorld();
         if (world == null) return;
 
-        world.spawnParticle(Particle.VILLAGER_HAPPY, location.clone().add(0.5, 0.3, 0.5), 15, 0.3, 0.2, 0.3, 0.15);
+        world.spawnParticle(Particle.HAPPY_VILLAGER, location.clone().add(0.5, 0.3, 0.5), 15, 0.3, 0.2, 0.3, 0.15);
         world.spawnParticle(Particle.COMPOSTER, location.clone().add(0.5, 0.5, 0.5), 8, 0.2, 0.1, 0.2, 0.1);
     }
 
@@ -261,11 +262,11 @@ public class EntropyManipulator extends SlimefunItem implements Rechargeable, Re
     }
 
     private void spawnSmoke(Location location) {
-        playEffect(location, Particle.SMOKE_NORMAL);
+        playEffect(location, Particle.SMOKE);
     }
 
     private void showAngryVillagerParticles(Location location) {
-        playEffect(location, Particle.VILLAGER_ANGRY);
+        playEffect(location, Particle.ANGRY_VILLAGER);
     }
 
     private boolean isFluid(Material material) {

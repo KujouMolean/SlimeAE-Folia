@@ -2,6 +2,8 @@ package me.ddggdd135.slimeae.tasks;
 
 import java.util.logging.Level;
 import javax.annotation.Nonnull;
+
+import com.molean.Folia;
 import me.ddggdd135.slimeae.SlimeAEPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
@@ -15,8 +17,7 @@ public class DataSavingTask implements Runnable {
     public void start(@Nonnull SlimeAEPlugin plugin) {
         this.tickRate = SlimeAEPlugin.getInstance().getConfig().getInt("auto-save-period", 300) * 20;
 
-        BukkitScheduler scheduler = plugin.getServer().getScheduler();
-        scheduler.runTaskTimerAsynchronously(plugin, this, tickRate, tickRate);
+        Folia.getScheduler().runTaskTimerAsynchronously(plugin, this, tickRate, tickRate);
     }
 
     private void reset() {

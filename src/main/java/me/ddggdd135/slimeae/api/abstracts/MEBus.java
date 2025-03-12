@@ -268,7 +268,7 @@ public abstract class MEBus extends TickingBlock implements IMEObject, Inventory
         lores.add("{#e4ed32}左键点击: &8设置朝向");
         lores.add("{#e4ed32}Shift+左键点击: &8打开目标方块");
         if (active) {
-            itemMeta.addEnchant(Enchantment.LUCK, 1, true);
+            itemMeta.addEnchant(Enchantment.LUCK_OF_THE_SEA, 1, true);
             itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             lores.add("");
             lores.add("&c已设置朝向此容器!");
@@ -289,7 +289,7 @@ public abstract class MEBus extends TickingBlock implements IMEObject, Inventory
             lores.add("{#e4ed32}左键点击: &8设置朝向");
             lores.add("{#e4ed32}Shift+左键点击: &8打开目标方块");
             if (active) {
-                itemMeta.addEnchant(Enchantment.LUCK, 1, true);
+                itemMeta.addEnchant(Enchantment.LUCK_OF_THE_SEA, 1, true);
                 itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
                 lores.add("");
                 lores.add("&c已设置朝向此容器!");

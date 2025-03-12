@@ -1,5 +1,6 @@
 package me.ddggdd135.slimeae;
 
+import com.molean.folia.adapter.Folia;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import java.util.logging.Level;
@@ -107,8 +108,8 @@ public final class SlimeAEPlugin extends JavaPlugin implements SlimefunAddon {
             world.getPopulators().add(new SlimefunBlockPopulator());
         }
 
-        Bukkit.getScheduler()
-                .runTaskTimer(
+        Folia.getScheduler()
+                .runTaskTimerGlobally(
                         this,
                         () -> slimefunTickCount++,
                         1,

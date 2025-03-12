@@ -1,5 +1,6 @@
 package me.ddggdd135.slimeae.core.slimefun.tools;
 
+import com.molean.Folia;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
@@ -78,7 +79,7 @@ public class ChargedStaff extends SlimefunItem implements Rechargeable {
     private void applyDamage(LivingEntity target, Player damager) {
         // 创建自定义伤害事件（绕过护甲计算）
         EntityDamageByEntityEvent event = new EntityDamageByEntityEvent(damager, target, DamageCause.CUSTOM, DAMAGE);
-        Bukkit.getPluginManager().callEvent(event);
+        Folia.getPluginManager().ce(event);
 
         if (!event.isCancelled()) {
             double finalHealth = target.getHealth() - DAMAGE;
@@ -106,7 +107,7 @@ public class ChargedStaff extends SlimefunItem implements Rechargeable {
         World world = loc.getWorld();
         if (world == null) return;
 
-        world.spawnParticle(Particle.SPELL_WITCH, loc, 20, 0.2, 0.2, 0.2, 0.3);
+        world.spawnParticle(Particle.WITCH, loc, 20, 0.2, 0.2, 0.2, 0.3);
         world.playSound(loc, Sound.ENTITY_ILLUSIONER_CAST_SPELL, 1.0F, 1.5F);
     }
 
@@ -114,7 +115,7 @@ public class ChargedStaff extends SlimefunItem implements Rechargeable {
         World world = loc.getWorld();
         if (world == null) return;
 
-        world.spawnParticle(Particle.SMOKE_NORMAL, loc, 10, 0.5, 0.5, 0.5, 0.1);
+        world.spawnParticle(Particle.SMOKE, loc, 10, 0.5, 0.5, 0.5, 0.1);
         world.playSound(loc, Sound.BLOCK_FIRE_EXTINGUISH, 0.8F, 1.2F);
     }
 
