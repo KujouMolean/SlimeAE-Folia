@@ -20,6 +20,8 @@ depend:
   - CMILib
   - GuguSlimefunLib
 
+folia-supported: true
+
 commands:
   SlimeAE:
     description: "SlimeAE基本命令"
